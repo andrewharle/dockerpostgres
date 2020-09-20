@@ -44,7 +44,7 @@ RUN set -eux; \
 	gosu --version; \
 	gosu nobody true
 
-# make the "en_US.UTF-8" locale so postgres will be utf-8 enabled by default
+# make the "en_GB.UTF-8" locale so postgres will be utf-8 enabled by default
 RUN set -eux; \
 	if [ -f /etc/dpkg/dpkg.cfg.d/docker ]; then \
 # if this file exists, we're likely in "debian:xxx-slim", and locales are thus being excluded so we need to remove that exclusion (since we need locales)
@@ -53,8 +53,8 @@ RUN set -eux; \
 		! grep -q '/usr/share/locale' /etc/dpkg/dpkg.cfg.d/docker; \
 	fi; \
 	apt-get update; apt-get install -y --no-install-recommends locales; rm -rf /var/lib/apt/lists/*; \
-	localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-ENV LANG en_US.utf8
+	localedef -i en_GB -c -f UTF-8 -A /usr/share/locale/locale.alias en_GB.UTF-8
+ENV LANG en_GB.utf8
 
 RUN set -eux; \
 	apt-get update; \
