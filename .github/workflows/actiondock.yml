@@ -1,4 +1,4 @@
-name: Docker
+name: Manually triggered workflow
 
 on:
   workflow_dispatch:
